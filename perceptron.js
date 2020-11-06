@@ -1,5 +1,5 @@
 module.exports = (data, options = {}) => {
-  const trainingData = {...data}
+  const trainingData = { ...data }
 
   let threshold     = options?.threshold    || Math.random()
   let learningrate  = options?.learningrate || Math.random()
@@ -7,12 +7,9 @@ module.exports = (data, options = {}) => {
   let w2            = options?.w2           || Math.random()
 
   let learning      = true
-  let iterations    = 0
-
 
   const train = () => {
     while (learning) {
-      iterations++
       learning = false
       const { rows } = trainingData
       rows.forEach(pattern => {
@@ -46,6 +43,7 @@ module.exports = (data, options = {}) => {
       w1 = w1 + (learningrate * error * x1)
       w2 = w2 + (learningrate * error * x2)
       threshold = threshold + (learningrate * error * 1)
+
       learning = true
     }
   }
